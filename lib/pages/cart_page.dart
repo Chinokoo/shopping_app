@@ -9,6 +9,9 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        title: Center(
+          child: Text('Cart Page'),
+        ),
         elevation: 0,
       ),
       drawer: const MyDrawer(),
