@@ -4,7 +4,6 @@ import 'package:shopping_app/models/shop.dart';
 import 'package:shopping_app/pages/cart_page.dart';
 import 'package:shopping_app/pages/intro_page.dart';
 import 'package:shopping_app/pages/shop_page.dart';
-import 'package:shopping_app/themes/light_theme.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -17,14 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const IntroPage(),
-      theme: lightMode,
-      routes: {
-        '/intro_page': (context) => const IntroPage(),
-        '/shop_page': (context) => const ShopPage(),
-        '/cart_page': (context) => const CartPage(),
-      },
-    );
+        debugShowCheckedModeBanner: false,
+        home: const IntroPage(),
+        theme: Provider.of<Shop>(context).themeData,
+        routes: {
+          '/intro_page': (context) => const IntroPage(),
+          '/shop_page': (context) => const ShopPage(),
+          '/cart_page': (context) => const CartPage(),
+        });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/models/product.dart';
+import 'package:shopping_app/themes/theme.dart';
 
 class Shop extends ChangeNotifier {
   //products for sale.
@@ -7,22 +8,22 @@ class Shop extends ChangeNotifier {
   final List<Product> _shop = [
     //product 1
     Product(
-      name: 'Widget Pro', price: 99.99,
-      description: 'The ultimate widget for all your needs',
-      //imagePath: 'assets/images/widget.png'
-    ),
+        name: 'Widget Pro',
+        price: 99.99,
+        description: 'The ultimate widget for all your needs',
+        imagePath: 'lib/images/glasses.png'),
     //product 2
     Product(
-      name: 'Gadget Gizmo',
-      price: 24.50, description: 'A multi-purpose gadget for everyday use',
-      //imagePath: 'assets/images/gadget.jpg'
-    ),
+        name: 'Gadget Gizmo',
+        price: 24.50,
+        description: 'A multi-purpose gadget for everyday use',
+        imagePath: 'lib/images/watch.jpg'),
     //product 3
     Product(
-      name: 'Tech Toy',
-      price: 14.99, description: 'An educational toy to learn about technology',
-      //imagePath: 'assets/images/toy.png'
-    ),
+        name: 'Tech Toy',
+        price: 14.99,
+        description: 'An educational toy to learn about technology',
+        imagePath: 'lib/images/hoddie.webp'),
   ];
 
   // user cart
@@ -42,6 +43,28 @@ class Shop extends ChangeNotifier {
   //remove item from cart
   void removeFromCart(Product product) {
     _cart.remove(product);
+    notifyListeners();
+  }
+
+  //theme
+
+  ThemeData _themeData = lightMode;
+
+  ThemeData get themeData => _themeData;
+
+  set themeData(ThemeData themeData) {
+    _themeData = themeData;
+    notifyListeners();
+  }
+
+  void toggleTheme() {
+    if (_themeData == lightMode) {
+      themeData = darkMode;
+      notifyListeners();
+    } else {
+      themeData = lightMode;
+      notifyListeners();
+    }
     notifyListeners();
   }
 }
